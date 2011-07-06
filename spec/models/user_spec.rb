@@ -8,18 +8,19 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
 require 'spec_helper'
+
 
 describe User do
 
   before(:each) do
+
     @attr = { 
       :name => "Example User", 
-      :email => "user@example.com",
+      :email => "user@foo.com",
       :password => "foobar",
       :password_confirmation => "foobar"
-       }
+                  }
   end
 
   it "should create a new instance given valid attributes" do

@@ -11,13 +11,10 @@
 
 class User < ActiveRecord::Base
     attr_accessor :password
-    attr_accessible :name, :email, :password, :password_confirmation
-    #Paperclip
-    has_attached_file :avatar, :styles => { 
-                               :medium => "300x300>", 
-                               :small => "100x100>",
-                               :thumb => "30x30>" }
-    
+    attr_accessible :name, :email, :password, :password_confirmation, :avatar, 
+                    :avatar_file_name, :avatar_content_type, 
+                    :avatar_file_size, :avatar_updated_at
+  
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     
     validates :name, :presence => true,
@@ -31,8 +28,12 @@ class User < ActiveRecord::Base
                          :confirmation => true,
                          :length       => { :within => 6..40 }
     
-    # Validates Paperclip
-    validates_attachment_presence :avatar
+    #Paperclip
+    has_attached_file :avatar, :styles => { 
+                             :medium => "300x300>", 
+                             :small => "100x100>",
+                             :thumb => "30x30>" }
+                             
     validates_attachment_size :avatar, :less_than => 5.megabytes
     validates_attachment_content_type :avatar, 
                                 :content_type => ['image/jpeg', 'image/png'] 
@@ -46,9 +47,8 @@ class User < ActiveRecord::Base
     
     def self.authenticate(email, submitted_password)
         user = find_by_email(email)
-        return nil  if user.nil?
-        return user if user.has_password?(submitted_password)
-    end
+        user && user.has_password?(submitted_password) ? user : nil
+      end
     
     private
     

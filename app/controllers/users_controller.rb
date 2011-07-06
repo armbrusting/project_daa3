@@ -6,13 +6,19 @@ class UsersController < ApplicationController
   end
   
   def new
+    @user = User.new
     @title = "Sign up"
   end
 
-  #Paperclip change
+  #Paperclip was User.create
   def create
-    @user = User.create( params[:user] )
+    @user = User.new( params[:user] )
+    if @user.save
+      flash[:success] = "Welcome to D&A Apparel!"
+      redirect_to @user
+    else
+      @title = "Sign up"
+      render 'new'
+    end
   end
-  #end Paperclip change
-  
 end
