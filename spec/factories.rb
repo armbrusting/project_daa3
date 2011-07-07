@@ -18,3 +18,7 @@ Factory.define :user do |u|
   u.password_confirmation "foobar"
   u.avatar   { fixture_file_upload( 'public/images/ryan.jpg', 'image/jpeg') }
 end
+
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
