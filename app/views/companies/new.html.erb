@@ -1,2 +1,8 @@
-<h1>Companies#new</h1>
-<p>Find me in app/views/companies/new.html.erb</p>
+<h1>New Company</h1>
+<%= form_for(@company, :html => { :multipart => true }) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<%= render 'fields', :f => f %>
+  	<div class="actions">
+    	<%= f.submit "Add company" %>
+  	</div>
+<% end %>

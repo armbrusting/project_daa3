@@ -187,3 +187,12 @@ ul.users {
 .users li {
   list-style: none;
 }
+
+ul.companies {
+  margin-top: 1em;
+}
+
+.companies li {
+  list-style: none;
+}
+

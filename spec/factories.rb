@@ -24,6 +24,10 @@ Factory.sequence :email do |n|
 end
 
 Factory.define :company do |company|
-  company.name "Foo bar"
+  company.name "A Foo bar"
   company.association :user
+end
+
+Factory.sequence :name do |n|
+  "Company-#{n}"
 end

@@ -21,5 +21,11 @@ namespace :db do
       user.password = "password";
       user.password_confirmation = "password";
        user.save! }
+       
+    User.all(:limit => 3).each do |user|
+      20.times do
+        user.companies.create!(:name => Faker::Company.name)
+      end
+    end
   end
 end
