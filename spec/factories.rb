@@ -22,3 +22,8 @@ end
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
+
+Factory.define :company do |company|
+  company.name "Foo bar"
+  company.association :user
+end

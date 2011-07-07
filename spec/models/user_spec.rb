@@ -159,4 +159,33 @@ describe User do
           @user.should be_admin
         end
     end
+
+    describe "company associations" do
+
+      before(:each) do
+        @user = User.create(@attr)
+      end
+
+      it "should have a companies attribute" do
+        @user.should respond_to(:companies)
+      end
+    end
+    
+    describe "company associations" do
+
+        before(:each) do
+          @user = User.create(@attr)
+          @comp1 = Factory(:company, :user => @user, :name => "Zeta")
+          @comp2 = Factory(:company, :user => @user, :name => "Alpha")
+        end
+
+        it "should have a companies attribute" do
+          @user.should respond_to(:companies)
+        end
+
+        it "should have the right microposts in the right order" do
+          @user.companies.should == [@comp2, @comp1]
+        end
+    end
+    
 end

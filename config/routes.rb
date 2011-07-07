@@ -1,4 +1,6 @@
 ProjectDaa3::Application.routes.draw do
+  get "companies/new"
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -9,6 +11,8 @@ ProjectDaa3::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
+  
+  match '/newcompany', :to => 'companies#new'
   
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

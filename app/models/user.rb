@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
     attr_accessible :name, :email, :password, :password_confirmation, :avatar, 
                     :avatar_file_name, :avatar_content_type, 
                     :avatar_file_size, :avatar_updated_at
+                    
+    has_many :companies
   
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     
