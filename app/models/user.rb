@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                     :avatar_file_size, :avatar_updated_at
                     
     has_many :companies
+    has_many :folders
   
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     

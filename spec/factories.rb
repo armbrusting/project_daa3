@@ -31,3 +31,16 @@ end
 Factory.sequence :name do |n|
   "Company-#{n}"
 end
+
+Factory.define :folder do |folder|
+  folder.name "Folderbar"
+  folder.association :user
+end
+
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
+
+Factory.sequence :name do |n|
+  "Company-#{n}"
+end
