@@ -19,21 +19,13 @@ Factory.define :user do |u|
   u.avatar   { fixture_file_upload( 'public/images/ryan.jpg', 'image/jpeg') }
 end
 
-Factory.sequence :email do |n|
-  "person-#{n}@example.com"
-end
-
 Factory.define :company do |company|
   company.name "A Foo bar"
   company.association :user
 end
 
-Factory.sequence :name do |n|
-  "Company-#{n}"
-end
-
 Factory.define :folder do |folder|
-  folder.name "Folderbar"
+  folder.name "A Folderbar"
   folder.association :user
 end
 
@@ -43,4 +35,8 @@ end
 
 Factory.sequence :name do |n|
   "Company-#{n}"
+end
+
+Factory.sequence :foldname do |n|
+  "Folder-#{n}"
 end

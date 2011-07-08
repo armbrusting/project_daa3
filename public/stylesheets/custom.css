@@ -196,3 +196,11 @@ ul.companies {
   list-style: none;
 }
 
+ul.folders {
+  margin-top: 1em;
+}
+
+.folders li {
+  list-style: none;
+}
+

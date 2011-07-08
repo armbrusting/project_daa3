@@ -27,5 +27,11 @@ namespace :db do
         user.companies.create!(:name => Faker::Company.name)
       end
     end
+    
+    User.all(:limit => 3).each do |user|
+      20.times do
+        user.folders.create!(:name => Faker::Lorem.words(2))
+      end
+    end
   end
 end

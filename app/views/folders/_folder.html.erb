@@ -1,0 +1,8 @@
+<li>
+  <%= link_to folder.name, folder %>
+  <% if current_user.admin? %>
+  | <%= link_to "delete", folder, :method => :delete, 
+								   :confirm => "You sure?",
+                                   :title => "Delete #{folder.name}" %>
+  <% end %>
+</li>

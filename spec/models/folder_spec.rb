@@ -37,4 +37,31 @@ describe Folder do
        @folder.user.should == @user
     end
   end
+  describe "validations" do
+
+    it "should require a user id" do
+      Folder.new(@attr).should_not be_valid
+    end
+
+    it "should require a nonblank name" do
+      @user.folders.build(:name => "  ").should_not be_valid
+    end
+
+    it "should reject a long name" do
+      @user.folders.build(:name => "a" * 141).should_not be_valid
+    end
+    
+    it "should reject duplicate names" do
+      @user.folders.create!(@attr)
+      folder_with_duplicate_name = @user.folders.new(@attr)
+      folder_with_duplicate_name.should_not be_valid
+    end
+    
+    it "should reject a name identical up to case" do
+      upcased_name = @attr[:name].upcase
+      @user.folders.create!(@attr.merge(:name => upcased_name))
+      folder_with_duplicate_name = @user.folders.new(@attr)
+      folder_with_duplicate_name.should_not be_valid
+    end
+  end
 end
