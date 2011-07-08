@@ -1,0 +1,8 @@
+<h1>Edit style</h1>
+
+<%= form_for(@style, :html => { :multipart => true})  do |f| %>
+	<%= render 'fields', :f => f %>
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>
+<% end %>

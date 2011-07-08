@@ -30,8 +30,18 @@ namespace :db do
     
     User.all(:limit => 3).each do |user|
       20.times do
-        user.folders.create!(:name => Faker::Lorem.words(2))
+        user.folders.create!(:name => Faker::Lorem.words(num = 2))
       end
     end
+    
+    User.all(:limit => 3).each do |user|
+      20.times do
+        user.styles.create!(:number => "DA-" + Faker::numerify('######'), 
+              :photo => File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample))
+      end
+    end
+    
+    #Style.all.each do |style| 
+      #style.photo = File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample) }
   end
 end

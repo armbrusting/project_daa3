@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708013305) do
+ActiveRecord::Schema.define(:version => 20110708213606) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,34 @@ ActiveRecord::Schema.define(:version => 20110708013305) do
     t.datetime "updated_at"
   end
 
+  add_index "folders", ["name"], :name => "index_folders_on_name"
+
+  create_table "styles", :force => true do |t|
+    t.string   "number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "description"
+    t.string   "department"
+    t.string   "classification"
+    t.string   "season"
+    t.boolean  "printed"
+    t.boolean  "embellished"
+    t.integer  "moq"
+  end
+
+  add_index "styles", ["classification"], :name => "index_styles_on_classification"
+  add_index "styles", ["department"], :name => "index_styles_on_department"
+  add_index "styles", ["embellished"], :name => "index_styles_on_embellished"
+  add_index "styles", ["moq"], :name => "index_styles_on_moq"
+  add_index "styles", ["number"], :name => "index_styles_on_number"
+  add_index "styles", ["printed"], :name => "index_styles_on_printed"
+  add_index "styles", ["season"], :name => "index_styles_on_season"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -43,5 +71,6 @@ ActiveRecord::Schema.define(:version => 20110708013305) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["name"], :name => "index_users_on_name"
 
 end

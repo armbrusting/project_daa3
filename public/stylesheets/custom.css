@@ -204,3 +204,11 @@ ul.folders {
   list-style: none;
 }
 
+ul.styles {
+  margin-top: 1em;
+}
+
+.styles li {
+  list-style: none;
+}
+

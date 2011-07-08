@@ -1,0 +1,37 @@
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :number %><br />
+  <%= f.text_field :number %>
+</div>
+<div class="fields">
+	<%= image_tag @style.photo.url(:small) %>
+	<%= f.file_field :photo %>
+</div>
+<div class="field">
+  <%= f.label :description %><br />
+  <%= f.text_field :description %>
+</div>
+<div class="field">
+  <%= f.label :department %><br />
+  <%= f.text_field :department %>
+</div>
+<div class="field">
+  <%= f.label :classification %><br />
+  <%= f.text_field :classification %>
+</div>
+<div class="field">
+  <%= f.label :season %><br />
+  <%= f.text_field :season %>
+</div>
+<div class="field">
+  <%= f.label :printed %><br />
+  <%= f.text_field :printed %>
+</div>
+<div class="field">
+  <%= f.label :embellished %><br />
+  <%= f.text_field :embellished %>
+</div>
+<div class="field">
+  <%= f.label :moq %><br />
+  <%= f.text_field :moq %>
+</div>

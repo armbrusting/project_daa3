@@ -50,7 +50,7 @@ describe CompaniesController do
       third  = Factory(:company, :name => "Ben", :user => @user)
       @companies = [@company, second, third]
       30.times do
-        @companies << Factory(:company, :name => Factory.next(:name),
+        @companies << Factory(:company, :name => Factory.next(:compname),
                               :user => @user)
       end
     end

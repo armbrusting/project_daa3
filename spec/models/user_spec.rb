@@ -213,4 +213,20 @@ describe User do
     end
   end
   
+  describe "style associations" do
+    
+    before(:each) do
+      @user = User.create(@attr)
+      @sty1 = Factory(:style, :user => @user, :number => "DA-000010")
+      @sty2 = Factory(:style, :user => @user, :number => "DA-000005")
+    end
+
+    it "should have a styles attribute" do
+      @user.should respond_to(:styles)
+    end
+
+    it "should have the right styles in the right order" do
+      @user.styles.should == [@sty2, @sty1]
+    end
+  end  
 end

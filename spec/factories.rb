@@ -13,7 +13,7 @@ end
 
 Factory.define :user do |u|
   u.name                  "Michael Hartl"
-  u.email                 "mhartl@example.com"
+  u.email                 "ryan@example.com"
   u.password              "foobar"
   u.password_confirmation "foobar"
   u.avatar   { fixture_file_upload( 'public/images/ryan.jpg', 'image/jpeg') }
@@ -29,14 +29,23 @@ Factory.define :folder do |folder|
   folder.association :user
 end
 
+Factory.define :style do |style|
+  style.number "DA-001000"
+  style.association :user
+end
+
 Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
 
-Factory.sequence :name do |n|
+Factory.sequence :compname do |n|
   "Company-#{n}"
 end
 
 Factory.sequence :foldname do |n|
   "Folder-#{n}"
+end
+
+Factory.sequence :stynumber do |n| 
+  "DA-#{110000 + n}"
 end

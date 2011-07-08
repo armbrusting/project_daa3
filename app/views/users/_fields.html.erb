@@ -15,3 +15,7 @@
   <%= f.label :password_confirmation, "Confirmation" %><br />
   <%= f.password_field :password_confirmation %>
 </div>
+<div class="fields">
+	<%= image_tag @user.avatar.url(:thumb) %>
+	<%= f.file_field :avatar %>
+</div>

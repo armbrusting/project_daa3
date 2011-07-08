@@ -2,9 +2,6 @@
 
 <%= form_for(@user, :html => { :multipart => true }) do |f| %>
   <%= render 'fields', :f => f %>
-  <div class="field">
-	<%= f.file_field :avatar %>
-  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
