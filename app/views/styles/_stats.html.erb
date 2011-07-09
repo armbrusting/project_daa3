@@ -1,0 +1,14 @@
+<% @style ||= current_style %>
+<div class="stats">
+  <table summary="Style stats">
+    <tr>
+      <td>
+        <a href="<%= collectors_style_path(@style) %>">
+          <span id="collectors" class="stat">
+            in <%= pluralize(@style.collectors.count,  "folder") %>
+          </span>
+        </a>
+       </td>
+    </tr>
+  </table>
+</div>

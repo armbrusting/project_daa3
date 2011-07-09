@@ -1,8 +1,18 @@
 ProjectDaa3::Application.routes.draw do
   resources :users
   resources :companies
-  resources :folders
-  resources :styles
+  resources :folders do
+    member do
+      get :collecting
+    end
+  end
+  resources :styles do
+    member do
+      get :collectors
+    end
+  end
+  resources :collections
+  
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'

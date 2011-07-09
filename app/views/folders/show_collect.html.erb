@@ -1,0 +1,23 @@
+<table summary="Information about collecting">
+  <tr>
+    <td class="main">
+      <h1><%= @title %></h1>
+
+      <% unless @styles.empty? %>
+        <ul class="styles">
+          <%= render @styles %>
+        </ul>
+        <%= will_paginate @styles %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @folder.name %><br />
+      <%= render 'stats' %>
+      <% unless @styles.empty? %>
+        <% @style.each do |style| %>
+          <%= image_tag style.photo.url(:thumb) %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>

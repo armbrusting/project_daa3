@@ -2,11 +2,22 @@
 #
 # Table name: styles
 #
-#  id         :integer         not null, primary key
-#  number     :string(255)
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id                 :integer         not null, primary key
+#  number             :string(255)
+#  user_id            :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  description        :string(255)
+#  department         :string(255)
+#  classification     :string(255)
+#  season             :string(255)
+#  printed            :boolean
+#  embellished        :boolean
+#  moq                :integer
 #
 
 require 'spec_helper'
@@ -71,6 +82,26 @@ describe Style do
       @user.styles.create!(@attr.merge(:number => upcased_number))
       style_with_duplicate_number = @user.styles.new(@attr)
       style_with_duplicate_number.should_not be_valid
+    end
+  end
+  describe "collections" do
+
+    before(:each) do
+      @style = @user.styles.create!(@attr)
+      @collector = Factory(:folder, :user => @user, :name => "foobar")
+    end
+    
+    it "should have a collections method" do
+      @style.should respond_to(:collections)
+    end
+
+    it "should have a collectors method" do
+      @style.should respond_to(:collectors)
+    end
+
+    it "should include the collector in the collectors array" do
+      @collector.collect!(@style)
+      @style.collectors.should include(@collector)
     end
   end
 end

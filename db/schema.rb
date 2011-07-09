@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110708213606) do
+ActiveRecord::Schema.define(:version => 20110709012141) do
+
+  create_table "collections", :force => true do |t|
+    t.integer  "collector_id"
+    t.integer  "collected_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collections", ["collected_id"], :name => "index_collections_on_collected_id"
+  add_index "collections", ["collector_id", "collected_id"], :name => "index_collections_on_collector_id_and_collected_id"
+  add_index "collections", ["collector_id"], :name => "index_collections_on_collector_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"

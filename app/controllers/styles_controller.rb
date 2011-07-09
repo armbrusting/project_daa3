@@ -51,6 +51,13 @@ class StylesController < ApplicationController
     redirect_to styles_path
   end
   
+  def collectors
+    @title = "Folders"
+    @style = Style.find(params[:id])
+    @folders = @style.collectors.paginate(:page => params[:page])
+    render 'show_collect'
+  end
+  
   private
   
     def admin_user

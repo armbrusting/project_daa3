@@ -1,5 +1,6 @@
 <li>
-  <%= link_to folder.name, folder %>
+  <%= link_to folder.name, folder %> | <%= link_to pluralize(folder.collecting.count, "style") %>
+  
   <% if current_user.admin? %>
   | <%= link_to "delete", folder, :method => :delete, 
 								   :confirm => "You sure?",

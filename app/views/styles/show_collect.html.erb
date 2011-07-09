@@ -1,0 +1,18 @@
+<table summary="Information about collectors">
+  <tr>
+    <td class="main">
+      <h1><%= @title %></h1>
+
+      <% unless @folders.empty? %>
+        <ul class="folders">
+          <%= render @folders %>
+        </ul>
+        <%= will_paginate @folders %>
+      <% end %>
+    </td>
+    <td class="sidebar round">
+      <strong>Number</strong> <%= @style.number %><br />
+      <%= render 'stats' %>
+    </td>
+  </tr>
+</table>

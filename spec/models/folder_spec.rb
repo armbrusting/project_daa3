@@ -37,6 +37,7 @@ describe Folder do
        @folder.user.should == @user
     end
   end
+  
   describe "validations" do
 
     it "should require a user id" do
@@ -63,5 +64,45 @@ describe Folder do
       folder_with_duplicate_name = @user.folders.new(@attr)
       folder_with_duplicate_name.should_not be_valid
     end
+  end
+
+  describe "collections" do
+
+    before(:each) do
+      @folder = @user.folders.create!(@attr)
+      @collected = Factory(:style, :user => @user, :number => "DA-123456")
+    end
+
+    it "should have a collections method" do
+      @folder.should respond_to(:collections)
+    end
+  
+    it "should have a collecting method" do
+      @folder.should respond_to(:collecting)
+    end
+    
+    it "should have a collect! method" do
+      @folder.should respond_to(:collect!)
+    end
+
+    it "should collect a style" do
+      @folder.collect!(@collected)
+      @folder.should be_collecting(@collected)
+    end
+
+    it "should include the collected style in the collecting array" do
+      @folder.collect!(@collected)
+      @folder.collecting.should include(@collected)
+    end
+ 
+    it "should have an uncollect! method" do
+      @folder.should respond_to(:uncollect!)
+    end
+
+    it "should uncollect a style" do
+      @folder.collect!(@collected)
+      @folder.uncollect!(@collected)
+      @folder.should_not be_collecting(@collected)
+    end  
   end
 end
