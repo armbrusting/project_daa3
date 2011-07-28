@@ -50,4 +50,30 @@ class Style < ActiveRecord::Base
                               :content_type => ['image/jpeg', 'image/png']
   
   default_scope :order => 'styles.number ASC'
+  
+  scope :tops, where(:department => 'top')
+  scope :bottoms, where(:department => 'bottom')
+  scope :dresses, where(:department => 'dress')
+  scope :outerwears, where(:department => 'outerwear')
+  scope :accessories, where(:department => 'accessory')
+  
+  #scope :from_folders_collected_by, lambda { |folder| collected_by(folder) }
+  
+  def self.search(search)
+    if search
+      where('number LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+  
+  private
+  
+  def self.collected_by(folder)
+    #collecting_ids = folder.collecting.map
+    collecting_ids = %(SELECT id   FROM collections
+                       WHERE collector_id = ':folder_id')
+    #where("id IN (#{collecting_ids})", { :folder_id => folder })
+    where("id IN (#{collecting_ids})", { :folder_id => folder })
+  end
 end

@@ -1,0 +1,7 @@
+<%= image_tag style.photo.url(:thumb) %>
+<%= link_to style.number, style %>
+<%= form_for @folder.collections.build(:collected_id => style.id, :collector_id => @folder.id) do |f| %>
+	<div><%= f.hidden_field :collected_id %></div>
+	<div><%= f.hidden_field :collector_id %></div>
+	<div class="actions"><%= f.submit "Add again" %></div>
+<% end %>

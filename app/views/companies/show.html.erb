@@ -1,3 +1,22 @@
 <h1>
 	<%= @company.name %>
 </h1>
+	<p>
+		<% if @company.folders.empty? %>
+			<%= link_to "Add a folder", newfolder_path(:company_id => @company.id) %>
+		<% else %>
+			<h3>Folders:</h3>
+			<homenav>
+				<ul>
+			<% @company.folders.each do |f| %>
+				<li class="round">
+				<%= link_to f.name, folder_collections_path(f)  %>
+				</li>
+			<% end %>
+			</ul>
+			</homenav>
+			</p>
+			<p>
+			<%= link_to "Add a folder", newfolder_path(params[:company_id]) %>
+	    <% end %>
+		</p>

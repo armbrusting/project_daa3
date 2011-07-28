@@ -1,0 +1,8 @@
+<h1><%= @title %></h1>
+
+<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
+	<%= render 'fields', :f => f %>
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>
+<% end %>

@@ -1,26 +1,34 @@
 <% if signed_in? %>
   <table class="front" summary="For signed-in users">
     <tr>
-      <td class="main">
-		<h1>D&amp;A Apparel</h1>
-        <ul>
-	      <li><%= link_to "Companies", companies_path %></li>
-	      <li><%= link_to "New Company", newcompany_path %></li>
-		  <li><%= link_to "Folders", folders_path %></li>
-		  <li><%= link_to "New Folder", newfolder_path %></li>
-	      <li><%= link_to "Styles",  styles_path %></li>
-		  <li><%= link_to "New Styles", newstyle_path %></li>
+      <td>
+      <homenav>
+	<ul>
+		<li>
+  		<ul>
+	      <li class="round"><%= link_to "Companies", companies_path %></li>
+	      <li class="round"><%= link_to "New Company", newcompany_path %></li>
+		</ul>
+		</li>
+		<li>
+		<ul>
+		  <li class="round"><%= link_to "Folders", folders_path %></li>
+		  <li class="round"><%= link_to "New Folder", newfolder_path %></li>
+		</ul>
+		</li>
+		<li>
+		<ul>
+	      <li class="round"><%= link_to "Styles",  styles_path %></li>
+		  <li class="round"><%= link_to "New Styles", newstyle_path %></li>
 	    </ul>
+		</li>
+	</ul>
       </td>
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
-      </td>
-    </tr>
+	  </homenav>
+	</tr>
   </table>
 <% else %>
-	<h1>D&amp;A Apparel</h1>
-	<p>This is the home page for D&amp;A Apparel</p>
-
-	<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+	<%= link_to "Sign in", signin_path, :class => "signup_button round" %><br />
+	<%= link_to "New User", signup_path, :class => "signup_button round" %> 
 <% end %>
 

@@ -4,6 +4,7 @@
       <h1><%= @title %></h1>
 
       <% unless @styles.empty? %>
+		<%= will_paginate @styles%>
         <ul class="styles">
           <%= render @styles %>
         </ul>
@@ -14,9 +15,9 @@
       <strong>Name</strong> <%= @folder.name %><br />
       <%= render 'stats' %>
       <% unless @styles.empty? %>
-        <% @style.each do |style| %>
-          <%= image_tag style.photo.url(:thumb) %>
-        <% end %>
+      <% @styles.each do |style| %>
+  		<%= image_tag style.photo.url(:thumb) %>
+      <% end %>
       <% end %>
     </td>
   </tr>

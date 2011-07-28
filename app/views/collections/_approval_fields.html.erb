@@ -1,0 +1,99 @@
+<%= render 'shared/error_messages', :object => f.object %>
+<% if f.object.fit_approval == "yes" %>
+<div class="field">
+  <%= f.label :fit_approval_note %><br />
+  <%= f.object.fit_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :fit_approval_date %><br />
+  <%= f.object.fit_approval_date %>
+</div>
+<% elsif f.object.fit_approval == "no" %>
+<div class="field">
+  <%= f.label :fit_approval_note %><br />
+  <%= f.text_field :fit_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :fit_approval_date %><br />
+  <%= f.date_select :fit_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :fit_approval %><br />
+<%= f.select :fit_approval, [['no', "no"], ['yes', "yes"], ['n/a', "n/a"]], {}, :onchange => 'this.form.submit();' %>
+</div>
+<% if f.object.color_approval == "yes" %>
+<div class="field">
+  <%= f.label :color_approval_note %><br />
+  <%= f.object.color_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :color_approval_date %><br />
+  <%= f.object.color_approval_date %>
+</div>
+<% elsif f.object.color_approval == "no" %>
+<div class="field">
+  <%= f.label :color_approval_note %><br />
+  <%= f.text_field :color_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :color_approval_date %><br />
+  <%= f.date_select :color_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :color_approval %><br />
+  <%= f.radio_button :color_approval, "yes", :onchange => 'this.form.submit();' %> Yes<br />
+  <%= f.radio_button :color_approval, "no", :onchange => 'this.form.submit();' %> No<br />
+  <%= f.radio_button :color_approval, "n/a", :onchange => 'this.form.submit();' %> N/A<br />
+</div>
+<% if f.object.print_approval == "yes" %>
+<div class="field">
+  <%= f.label :print_approval_note %><br />
+  <%= f.object.print_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :print_approval_date %><br />
+  <%= f.object.print_approval_date %>
+</div>
+<% elsif f.object.print_approval == "no" %>
+<div class="field">
+  <%= f.label :print_approval_note %><br />
+  <%= f.text_field :print_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :print_approval_date %><br />
+  <%= f.date_select :print_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :print_approval %><br />
+  <%= f.radio_button :print_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+  <%= f.radio_button :print_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+  <%= f.radio_button :print_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A<br />
+</div>
+<% if f.object.quality_approval == "yes" %>
+<div class="field">
+  <%= f.label :quality_approval_note %><br />
+  <%= f.object.quality_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :quality_approval_date %><br />
+  <%= f.object.quality_approval_date %>
+</div>
+<% elsif f.object.quality_approval == "no" %>
+<div class="field">
+  <%= f.label :quality_approval_note %><br />
+  <%= f.text_field :quality_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :quality_approval_date %><br />
+  <%= f.date_select :quality_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :quality_approval %><br />
+  <%= f.radio_button :quality_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+  <%= f.radio_button :quality_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+  <%= f.radio_button :quality_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A<br />
+</div>

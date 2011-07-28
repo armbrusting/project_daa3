@@ -1,0 +1,45 @@
+<strong><%= link_to @folder.company.name, company_path(@folder.company.id) %></strong><br />
+	<%= link_to @folder.name, folder_collections_path(@folder) %>
+<!--	<%= render 'folders/stats' %> -->
+	<% if @folder.attention == "none" %>
+		<%= form_for(@folder) do |f| %>
+			<div class="field">
+		<%= hidden_field(:folder, :attention, :value  => "monopol") %>
+			</div>
+			<div class="actions">
+		  	<%= f.submit "Ping Monopol" %>
+			</div>
+		<% end %>
+	<% else %>			
+		<% if @folder.attention == "monopol" %>
+			<span>Needs Monopol's attention</span>
+			<%= form_for(@folder) do |f| %>
+				<div class="field">
+				<%= hidden_field(:folder, :attention, :value  => "daa") %>
+				</div>
+				<div class="actions">
+		  		<%= f.submit "Ping DAA" %>
+				</div>
+			<% end %>
+		<% else %>			
+			<% if @folder.attention == "daa" %>
+				<span>Needs DAA's attention</span>
+				<%= form_for(@folder) do |f| %>
+					<div class="field">
+					<%= hidden_field(:folder, :attention, :value  => "monopol") %>
+					</div>
+					<div class="actions">
+		  			<%= f.submit "Ping Monopol" %>
+					</div>
+				<% end %>				
+				<%= form_for(@folder)  do |f| %>
+					<div class="field">
+					<%= hidden_field(:folder, :attention, :value  => "none") %>
+					</div>
+					<div class="actions">
+	  				<%= f.submit "Remove Attention" %>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>

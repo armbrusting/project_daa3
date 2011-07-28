@@ -1,0 +1,8 @@
+<tr>
+  <td class="style">
+    <span class="number">
+		<%= image_tag linesheet_item.photo.url(:thumb) %>
+      <%= link_to linesheet_item.number, folder_collection_path(params[:folder_id], linesheet_item) %>
+    </span>
+  </td>
+</tr>

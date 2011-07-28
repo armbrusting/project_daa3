@@ -1,0 +1,17 @@
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :vessel %><br />
+  <%= f.text_field :vessel %>
+</div>
+<div class="fields">
+  <%= f.label :voyage %><br />
+  <%= f.text_field :voyage %>
+</div>
+<div class="field">
+  <%= f.label :tacking_number %><br />
+  <%= f.text_field :tacking_number %>
+</div>
+<div class="field">
+  <%= f.label :eta %><br />
+  <%= f.date_select :eta %>
+</div>

@@ -38,5 +38,7 @@ module ProjectDaa3
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    Dir.glob("./lib/*.{rb}").each { |file| require file }
   end
 end

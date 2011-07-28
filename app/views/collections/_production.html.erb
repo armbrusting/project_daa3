@@ -1,0 +1,9 @@
+<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
+	<%= render 'production_fields', :f => f %>
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>	
+<% end %>
+<% if ( @collection.pp_approval != 'no' && @collection.top_approval != 'no') %>
+<%= link_to "Production Shipped", shipped_collection_path(@collection), :method => :put %>
+<% end %>

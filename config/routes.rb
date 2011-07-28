@@ -1,17 +1,31 @@
 ProjectDaa3::Application.routes.draw do
   resources :users
-  resources :companies
-  resources :folders do
-    member do
-      get :collecting
+  resources :companies do
+      resources :folders, :on => :member
     end
+  resources :collections do
+    member do
+      put :pingdaa
+      put :pingmono
+      put :agreement
+      put :approved
+      put :shipped
+      put :delivered
+    end
+  end
+  resources :folders do
+      get :collecting, :on => :member
+      get :collect, :on  => :member
+      resources :collections, :on => :member
+      get :collections, :on  => :member
+      resources :styles, :on  => :member
+      get :company
   end
   resources :styles do
-    member do
-      get :collectors
-    end
+      get :collectors, :on => :member
   end
-  resources :collections
+  
+  resources :notices
   
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -22,10 +36,13 @@ ProjectDaa3::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
+  match '/admin',   :to => 'pages#admin'
+  match '/settings', :to => 'pages#settings'
   
   match '/newcompany',       :to => 'companies#new'
   match '/newfolder',        :to => 'folders#new'
   match '/newstyle',         :to => 'styles#new'
+  
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'pages#home'

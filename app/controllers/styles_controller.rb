@@ -4,11 +4,17 @@ class StylesController < ApplicationController
   
   def index
     @title = "All styles"
-    @styles = Style.paginate(:page => params[:page])
+    @styles = Style.search(params[:search]).order.paginate(:per_page => 25, :page => params[:page])
+    if params[:folder_id] != nil
+    @folder = Folder.find(params[:folder_id])
+    end
   end
   
   def show
     @style = Style.find(params[:id])
+     if params[:folder_id] != nil
+      @folder = Folder.find(params[:folder_id])
+      end
     @title = @style.number
   end
   

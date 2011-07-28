@@ -1,0 +1,23 @@
+<% @collections.each do |style| %>
+	<li>
+  	<%= image_tag style.photo.url(:thumb) %>
+  	<%= link_to style.number, style %>
+
+	<% if @folder.nil?%>
+	<% else %>
+  		<div id="collect_form">
+			<% if @folder.collecting?(style) %>
+			<%= form_for @folder.collections.find_by_collected_id(style),
+         			:html => { :method => :delete }, :remote => true do |f| %>
+			<div class="actions"><%= f.submit "Remove" %></div>
+			<% end %>
+	<% end %>
+		</div>
+<% end %>
+	<% if current_user.admin? %>
+  | <%= link_to "edit", edit_style_path(style) %>
+  | <%= link_to "delete", style, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{style.number}" %>
+  <% end %>
+</li>
+<% end %>

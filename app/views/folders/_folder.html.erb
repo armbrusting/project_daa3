@@ -1,5 +1,9 @@
 <li>
-  <%= link_to folder.name, folder %> | <%= link_to pluralize(folder.collecting.count, "style") %>
+	<% if folder.company_id == nil %>
+  <%= link_to folder.name + ' | ' +  pluralize(folder.collections.count, "style"), folder_collections_path(folder) %>
+	<% else %>
+	  <%= link_to folder.name + ' - ' + folder.company.name + ' | ' +  pluralize(folder.collections.count, "style"), folder_collections_path(folder) %>
+	<% end %>
   
   <% if current_user.admin? %>
   | <%= link_to "delete", folder, :method => :delete, 

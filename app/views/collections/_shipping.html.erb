@@ -1,0 +1,7 @@
+<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
+	<%= render 'shipping_fields', :f => f %>
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>	
+<% end %>
+<%= link_to "Production Delivered", delivered_collection_path(@collection), :method => :put %>

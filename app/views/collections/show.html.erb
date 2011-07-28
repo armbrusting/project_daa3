@@ -1,0 +1,31 @@
+<table summary="Style in Collection">
+  <tr>
+    <td class="main">
+		<h1><%= @collection.id %> | <%= @style.number %> | <%= @collection.status %></h1>
+				<%= link_to "Return to " + @folder.name, folder_collections_path(@folder)%> | 
+				<%= link_to "Add another Style", folder_styles_path(@folder.id)%> | <p><%= link_to "Printable P.O. (PDF)", collection_path(@collection, :format => 'pdf') %></p>	
+		<% if @collection.status == "new" %>
+			<%= render 'info', :collection => @collection %>
+		<% elsif @collection.status == "updated" %>
+			<%= render 'info', :collection => @collection %>
+		<% elsif @collection.status == "returned" %>
+			<%= render 'info', :collection => @collection %>
+		<% elsif @collection.status == "agreed" %>
+		<%= render 'approval', :collection => @collection %>
+		<% elsif @collection.status == "approved" %>
+		<%= render 'production', :collection => @collection %>
+		<% elsif @collection.status == "shipped" %>
+		<%= render 'shipping', :collection => @collection %>
+		<% else %>
+		<%= render 'info', :collection => @collection %>
+		<%= render 'approval', :collection => @collection %>
+		<%= render 'production', :collection => @collection %>
+		<%= render 'shipping', :collection => @collection %>		
+		<% end %>
+	</td>
+	<td class="sidebar round">
+		<%= render 'sidebar' %>	
+	
+    </td>
+  </tr>
+</table>	

@@ -3,35 +3,36 @@
   <%= f.label :number %><br />
   <%= f.text_field :number %>
 </div>
-<div class="fields">
-	<%= image_tag @style.photo.url(:small) %>
-	<%= f.file_field :photo %>
-</div>
 <div class="field">
   <%= f.label :description %><br />
   <%= f.text_field :description %>
 </div>
 <div class="field">
   <%= f.label :department %><br />
-  <%= f.text_field :department %>
+  <%= f.select :department, ['accessory', 'bottom', 'dress', 'outwear','top'], { :include_blank => true } %>
 </div>
 <div class="field">
   <%= f.label :classification %><br />
-  <%= f.text_field :classification %>
+  <%= f.select :classification, ['Active', 'Basic', 'Denim', 'Fashion', 'Fashion Basic', 'Knit', 'Sweater', 'Swim', 'Woven'], { :include_blank => true } %>
 </div>
 <div class="field">
   <%= f.label :season %><br />
-  <%= f.text_field :season %>
+  <%= f.select :season, ['Fall', 'Winter', 'Spring', 'Summer'], { :include_blank => true } %>
 </div>
 <div class="field">
   <%= f.label :printed %><br />
-  <%= f.text_field :printed %>
+  <%= f.check_box :printed %>
 </div>
 <div class="field">
   <%= f.label :embellished %><br />
-  <%= f.text_field :embellished %>
+  <%= f.check_box :embellished %>
 </div>
 <div class="field">
-  <%= f.label :moq %><br />
-  <%= f.text_field :moq %>
+  <%= f.label :moq, "Minimum Order Quantity" %><br />
+  <%= f.number_field :moq %>
+</div>
+<div class="fields">
+	<%= f.label :photo %><br />
+	<%= image_tag @style.photo.url(:small) %>
+	<%= f.file_field :photo %><br />
 </div>

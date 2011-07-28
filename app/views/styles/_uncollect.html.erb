@@ -1,0 +1,12 @@
+<%= image_tag style.photo.url(:thumb) %>
+<%= link_to style.number, style %>
+<%= form_for @folder.collections.find_by_collected_id(style), :html => { :method => :delete }, :remote => true do |f| %>
+<div class="actions"><%= f.submit "Remove" %></div>
+<% end %>
+
+<%= form_for @folder.collections.build(:collected_id => style.id, 			
+					:collector_id => @folder.id), :remote => true do |f| %>
+	<div><%= f.hidden_field :collected_id %></div>
+	<div><%= f.hidden_field :collector_id %></div>
+	<div class="actions"><%= f.submit "Add again" %></div>
+<% end %>

@@ -1,0 +1,59 @@
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :factory_start_date %><br />
+  <%= f.date_select :factory_start_date %>
+</div>
+<div class="fields">
+  <%= f.label :ex_factory_date %><br />
+  <%= f.date_select :ex_factory_date %>
+</div>
+<% if f.object.pp_approval == "yes" %>
+<div class="field">
+  <%= f.label :pp_approval_note %><br />
+  <%= f.object.pp_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :pp_approval_date %><br />
+  <%= f.object.pp_approval_date %>
+</div>
+<% elsif f.object.pp_approval == "no" %>
+<div class="field">
+  <%= f.label :pp_approval_note %><br />
+  <%= f.text_field :pp_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :pp_approval_date %><br />
+  <%= f.date_select :pp_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :pp_approval %><br />
+  <%= f.radio_button :pp_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+  <%= f.radio_button :pp_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+  <%= f.radio_button :pp_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A
+</div>
+<% if f.object.top_approval == "yes" %>
+<div class="field">
+  <%= f.label :top_approval_note %><br />
+  <%= f.object.top_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :top_approval_date %><br />
+  <%= f.object.top_approval_date %>
+</div>
+<% elsif f.object.top_approval == "no" %>
+<div class="field">
+  <%= f.label :top_approval_note %><br />
+  <%= f.text_field :top_approval_note %>
+</div>
+<div class="fields">
+  <%= f.label :top_approval_date %><br />
+  <%= f.date_select :top_approval_date, :default => Time.now %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :top_approval %><br />
+  <%= f.radio_button :top_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+  <%= f.radio_button :top_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+  <%= f.radio_button :top_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A
+</div>

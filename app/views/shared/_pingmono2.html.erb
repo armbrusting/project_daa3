@@ -1,0 +1,5 @@
+<%= form_for Notice.update(:id => @folder.notice.id, :attention => nil), :remote => true do |f| %>
+  <div><%= f.hidden_field :id %></div>
+  <div><%= f.hidden_field :attention %></div>
+  <div class="actions"><%= f.submit "remove ping" %></div>
+<% end %>

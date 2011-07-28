@@ -21,7 +21,7 @@ class FoldersController < ApplicationController
     @folder = current_user.folders.build(params[:folder])
     if @folder.save
       flash[:success] = "Folder created!"
-      redirect_to(folder_path(@folder))
+      redirect_to(folder_collections_path(@folder))
     else
       @title = "New folder"
       @folder.name = ""
@@ -38,7 +38,10 @@ class FoldersController < ApplicationController
     @folder = Folder.find(params[:id])
     if @folder.update_attributes(params[:folder])
       flash[:success] = "Folder information updated."
-      redirect_to @folder
+      respond_to do |format|
+            format.html { redirect_to @folder }
+            format.js
+          end
     else
       @title = "Edit folder"
       render 'edit'
@@ -52,9 +55,16 @@ class FoldersController < ApplicationController
   end
   
   def collecting
-    @title = "Styles"
+    @title = "Saved Styles"
     @folder = Folder.find(params[:id])
     @styles = @folder.collecting.paginate(:page => params[:page])
+    render 'show_collect'
+  end
+  
+  def collect
+    @title = "Add Styles"
+    @folder = Folder.find(params[:id])
+    @styles = Style.paginate(:page => params[:page])
     render 'show_collect'
   end
   

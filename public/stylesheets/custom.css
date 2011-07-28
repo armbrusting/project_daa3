@@ -3,7 +3,8 @@
 }
 
 body {
-  background: #cff;
+  background: #FFF0F5
+;
 }
 
 header {
@@ -62,11 +63,10 @@ nav ul {
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 0.2em 0;
+  padding: 0.2em 5px;
 }
 
 nav ul li a {
-  padding: 0 5px;
   font-weight: bold;
 }
 
@@ -78,6 +78,50 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* folder */
+homenav {
+  text-align: center;
+  padding: 0 0.7em;
+  white-space: nowrap;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+homenav ul {
+	margin-top: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+homenav ul li{
+  list-style-type: none;
+  display: inline-block;
+  margin: 5px;
+}
+
+homenav ul li ul li{
+  list-style-type: none;
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  background: #F5F5F5;
+}
+
+homenav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+homenav ul li a:visited {
+  color: #09c;
+}
+
+homenav ul li a:hover {
+  text-decoration: underline;
+}
+
+
 /* Sign up button */
 
 a.signup_button {
@@ -86,8 +130,8 @@ a.signup_button {
   display: block;
   text-align: center;
   width: 190px;
-  color: #fff;
-  background: #006400;
+  color: #09c;
+  background: #F5F5F5;
   font-size: 150%;
   font-weight: bold;
   padding: 20px;
@@ -127,7 +171,7 @@ td.sidebar {
   width: 30%;
   padding: 1em;
   vertical-align: top;
-  background: #ffc;
+  background: #F5F5F5;
 }
 
 .profile img.gravatar {
@@ -210,5 +254,60 @@ ul.styles {
 
 .styles li {
   list-style: none;
+}
+
+h1.styles {
+  margin-bottom: 0.3em;
+}
+
+table.styles {
+  margin-top: 1em;
+}
+
+table.styles tr {
+  height: 70px;
+}
+
+table.styles tr td.avatar {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.styles tr td.style {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.styles tr td.style span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.folder_info img {
+  padding-right: 0.1em;
+}
+
+div.folder_info a {
+  text-decoration: none;
+}
+
+div.folder_info span.folder_name {
+  position: absolute;
+}
+
+div.folder_info span.styles {
+  font-size: 80%;
+}
+
+form.new_style {
+  margin-bottom: 2em;
+}
+
+form.new_style textarea {
+  height: 4em;
+  margin-bottom: 0;
 }
 

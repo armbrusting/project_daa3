@@ -10,18 +10,54 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110709012141) do
+ActiveRecord::Schema.define(:version => 20110720205105) do
 
   create_table "collections", :force => true do |t|
     t.integer  "collector_id"
     t.integer  "collected_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "notes"
+    t.integer  "projected_units"
+    t.integer  "number_of_colors"
+    t.string   "size"
+    t.string   "modification"
+    t.date     "delivery_date"
+    t.string   "export"
+    t.string   "shipment"
+    t.decimal  "ship_cost",             :default => 0.0
+    t.decimal  "pricing"
+    t.string   "fit_approval",          :default => "no"
+    t.date     "fit_approval_date"
+    t.string   "fit_approval_note"
+    t.string   "color_approval",        :default => "no"
+    t.date     "color_approval_date"
+    t.string   "color_approval_note"
+    t.string   "print_approval",        :default => "no"
+    t.date     "print_approval_date"
+    t.string   "print_approval_note"
+    t.string   "quality_approval",      :default => "no"
+    t.date     "quality_approval_date"
+    t.string   "quality_approval_note"
+    t.date     "factory_start_date"
+    t.date     "ex_factory_date"
+    t.string   "pp_approval",           :default => "no"
+    t.date     "pp_approval_date"
+    t.string   "pp_approval_note"
+    t.string   "top_approval",          :default => "no"
+    t.date     "top_approval_date"
+    t.string   "top_approval_note"
+    t.string   "vessel"
+    t.string   "voyage"
+    t.string   "tacking_number"
+    t.date     "eta"
+    t.string   "status",                :default => "new"
   end
 
   add_index "collections", ["collected_id"], :name => "index_collections_on_collected_id"
   add_index "collections", ["collector_id", "collected_id"], :name => "index_collections_on_collector_id_and_collected_id"
   add_index "collections", ["collector_id"], :name => "index_collections_on_collector_id"
+  add_index "collections", ["status"], :name => "index_collections_on_status"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -37,8 +73,10 @@ ActiveRecord::Schema.define(:version => 20110709012141) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "company_id"
   end
 
+  add_index "folders", ["company_id"], :name => "index_folders_on_company_id"
   add_index "folders", ["name"], :name => "index_folders_on_name"
 
   create_table "styles", :force => true do |t|
@@ -57,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20110709012141) do
     t.boolean  "printed"
     t.boolean  "embellished"
     t.integer  "moq"
+    t.string   "fabric"
   end
 
   add_index "styles", ["classification"], :name => "index_styles_on_classification"

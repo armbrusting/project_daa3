@@ -4,6 +4,7 @@
       <h1>
         <%= @style.number %>
       </h1>
+	<%= render 'collect_form' %>
 <ul>
 	<li>Description: <%= @style.description %></li>
 	<li>Department: <%= @style.department %></li>
@@ -12,10 +13,43 @@
 	<li>Printed: <%= @style.printed %></li>
 	<li>Embellished: <%= @style.embellished %></li>
 	<li>MOQ: <%= @style.moq %></li>
+	</ul>
+	
+	<% if @folder.nil?%>
+		<%= form_for @style.collections.build(:collection) do |f| %>
+			<div><%= f.collection_select(:collector_id, Folder.all,
+			 							 :id, :name) %></div>  
+			<div><%= f.hidden_field :collected_id %></div>
+			<div class="actions"><%= f.submit "Add" %></div>
+		<% end %>	
+	<% else %>
+		<% if @folder.collecting?(@style) %>
+			<%= form_for @folder.collections.find_by_collected_id(@style),
+	         			:html => { :method => :delete } do |f| %>
+			<div class="actions"><%= f.submit "Remove" %></div>
+			<% end %>
+
+			<%= form_for @folder.collections.build(:collected_id => @style.id, 			
+								:collector_id => @folder.id) do |f| %>
+				<div><%= f.hidden_field :collected_id %></div>
+				<div><%= f.hidden_field :collector_id %></div>
+				<div class="actions"><%= f.submit "Add" %></div>
+			<% end %>
+		<% else %>
+			<%= form_for @folder.collections.build(:collected_id => @style.id, 
+									:collector_id => @folder.id) do |f| %>
+				<div><%= f.hidden_field :collected_id %></div>
+				<div><%= f.hidden_field :collector_id %></div>
+				<div class="actions"><%= f.submit "Add" %></div>
+				<% end %>
+		<% end %>
+	<% end %>
     </td>
     <td class="sidebar round">
       <%= image_tag @style.photo.url(:medium) %>
 		<%= render 'stats' %>
+		<%= render 'collect_form' %>
+		
     </td>
   </tr>
 

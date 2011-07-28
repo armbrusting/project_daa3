@@ -1,0 +1,10 @@
+
+<%= Style.tops.all.map(&:number) %>
+
+<%= Style.find_all_by_department("top").map(&:number) %>
+
+<%= form_for styles_path, :method => 'get', :id => "attr_search" do |f| %>
+<%= f.select :department, ['accessory', 'bottom', 'dress', 'outwear','top'] %>
+<%= f.select :classification, ['Active', 'Basic', 'Denim', 'Fashion', 'Fashion Basic', 'Knit', 'Sweater', 'Swim', 'Woven'] %>
+<%= f.select :season, ['Fall', 'Winter', 'Spring', 'Summer'] %>
+<% end %>

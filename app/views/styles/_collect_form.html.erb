@@ -1,0 +1,9 @@
+<% unless @folder.nil? %>
+ 	<div id="collect_form">
+	<% if @folder.collecting?(style) %>
+		<%= render 'styles/uncollect', :style => style %>
+	<% else %>
+		<%= render 'styles/collect', :style => style %>
+	<% end %>
+	</div>
+<% end %>

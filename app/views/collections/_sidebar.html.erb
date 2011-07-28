@@ -1,0 +1,15 @@
+<strong><%= link_to @folder.company.name, company_path(@folder.company.id) %></strong><br />
+	<%= link_to @folder.name, folder_collections_path(@folder) %><br />
+
+
+		<%= image_tag @style.photo.url(:medium) %> | <%= link_to @style.number, @style %>
+	<ul>
+		<li>Description: <%= @style.description %></li>
+		<li>Department: <%= @style.department %></li>
+		<li>Classification: <%= @style.classification %></li>
+		<li>Season: <%= @style.season %></li>
+		<li>Printed: <%= @style.printed %></li>
+		<li>Embellished: <%= @style.embellished %></li>
+		<li>MOQ: <%= @style.moq %></li>
+		</ul>
+	

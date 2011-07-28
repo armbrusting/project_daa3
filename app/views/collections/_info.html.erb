@@ -1,0 +1,15 @@
+<%= form_for(@collection, :html => { :multipart => true}) do |f| %>
+	<%= render 'info_fields', :f => f %>
+	<div class="actions">
+	  <%= f.submit "Update" %>
+	</div>
+<% end %>
+	<% if @collection.status == "new" %>
+		<%= render 'ping_mono', :collection => @collection %>
+	<% elsif @collection.status == "updated" %>
+		<%= render 'ping_daa', :collection => @collection %>
+	<% elsif @collection.status == "returned" %>
+		<%= render 'ping_mono2', :collection => @collection %>
+	<% else %>
+	<%= render 'ping_mono2', :collection => @collection %>
+	<% end %>

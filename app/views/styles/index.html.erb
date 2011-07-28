@@ -1,9 +1,29 @@
-<h1>All styles</h1>
+<table summary="Styles">
+  <tr>
+    <td class="main">
+	<% if @folder.nil? %>
+		<h1>All styles</h1>
+	<% else %>
+		<h1><%= @folder.name %> | <%= @folder.company.name %></h1>
+		<h3>Add a Style</h3>
+	<% end %>
+		<%= Style.where( :department => "top" ).map(&:number) %>
+	
+	<%= form_tag styles_path, :method => 'get', :id => "attr_search" do %>
+	<%= select :department, ['accessory', 'bottom', 'dress', 'outwear','top'], { :include_blank => true } %>
 
-<%= will_paginate %>
-
-<ul class="styles">
-  <%= render @styles %>
-</ul>
-
-<%= will_paginate %>
+	<% end %>
+			<div id="attr_styles"><%= render 'styles_sidebar' %>	</div>
+	</td>
+	<td class="sidebar round">
+		<h3>Styles by Number</h3>
+	<%= form_tag styles_path, :method => 'get', :id => "styles_search" do %>
+		 <p>Search:
+		    <%= text_field_tag :search, params[:search] %>
+		  </p>
+		<% end %>
+		<div id="styles"><%= render 'styles_sidebar' %>	</div>
+	
+    </td>
+  </tr>
+</table>

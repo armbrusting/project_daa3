@@ -14,6 +14,8 @@ class Company < ActiveRecord::Base
   
   belongs_to :user
   
+  has_many :folders
+  
   validates :name,    :presence => true, 
                       :length => { :maximum => 140 },
                       :uniqueness => { :case_sensitive => false }

@@ -1,0 +1,20 @@
+<table summary="Information about collecting">
+  <tr>
+    <td class="main">
+		<h1><%= @title %></h1>
+		<%= link_to "Add a style", folder_styles_path(params[:folder_id]) %>
+		<%= render :partial => 'shared/linesheet_item', 
+			:collection => @linesheet_items %>	
+	</td>
+	<td class="sidebar round">
+		<strong>Name</strong>
+			<%= @folder.name %>
+      		<%= render 'stats' %>
+      		<% unless @linesheet_items.empty? %>
+      			<% @linesheet_items.each do |l| %>
+  					<%= image_tag l.photo.url(:thumb) %>
+      			<% end %>
+      		<% end %>
+    </td>
+  </tr>
+</table>

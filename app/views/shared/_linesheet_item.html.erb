@@ -1,0 +1,10 @@
+<tr class="round">
+  <td>
+    <span class="name"><%= image_tag linesheet_item.collected.photo.url(:thumb) %>
+<%= link_to linesheet_item.collected.number, collection_path(linesheet_item) %>
+		</td>
+		<td>	
+<%= linesheet_item.status %>
+    </span>
+  </td>
+</tr>

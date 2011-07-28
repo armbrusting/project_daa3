@@ -1,0 +1,9 @@
+<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
+	<%= render 'approval_fields', :f => f %>	
+	<div class="actions">
+	  <%= f.submit "Update" %>
+	</div>
+<% end %>
+<% if ( @collection.fit_approval != 'no' && @collection.color_approval != 'no' && @collection.print_approval != 'no' && @collection.quality_approval != 'no' ) %>
+<%= link_to "Approved for Production", approved_collection_path(@collection), :method => :put %>
+<% end %>

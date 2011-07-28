@@ -1,0 +1,1 @@
+pdf.text "#{@folder.company.name} | Style #{@style.number}", :size => 30, :style => :bold

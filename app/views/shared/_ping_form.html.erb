@@ -1,0 +1,14 @@
+<% if @folder.notice %>
+	<% if @folder.notice.attention == nil %>
+		<%= render 'shared/pingmono' %>
+	<% end %>
+	<% if @folder.notice.attention == "monopol" %>
+		<%= render 'shared/pingdaa' %>
+	<% end %>
+	<% if @folder.notice.attention == "daa" %>
+		<%= render 'shared/pingmono2' %>
+		<% end %>
+<% else %>
+		<%= render 'shared/pingmono' %>
+<% end %>
+

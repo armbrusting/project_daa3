@@ -1,9 +1,13 @@
 <li>
-  <%= image_tag style.photo.url(:thumb) %>
-  <%= link_to style.number, style %>
-	<% if current_user.admin? %>
-  | <%= link_to "edit", edit_style_path(style) %>
-  | <%= link_to "delete", style, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{style.number}" %>
-  <% end %>
+<div id="collect_form_<%= style.id %>">
+<% if @folder.nil? %>
+	<%= render 'styles/uncollected', :style => style %>
+<% else %>
+	<% if @folder.collecting?(style) %>
+		<%= render 'styles/collect_again', :style => style %>
+	<% else %>	
+		<%= render 'styles/collect', :style => style %>
+	<% end %>
+</div>
 </li>
+<% end %>

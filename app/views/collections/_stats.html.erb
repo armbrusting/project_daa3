@@ -1,0 +1,14 @@
+<% @folder ||= current_folder %>
+<div class="stats">
+  <table summary="Folder stats">
+    <tr>
+      <td>
+        <a href="<%= collecting_folder_path(@folder) %>">
+          <span id="collecting" class="stat">
+            <%= pluralize(@folder.collecting.count, "styles") %>
+          </span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>

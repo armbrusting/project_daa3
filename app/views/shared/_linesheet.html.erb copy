@@ -1,0 +1,6 @@
+<% unless @linesheet_items.empty? %>
+  <table class="styles" summary="Folder styles">
+    <%= render :partial => 'shared/linesheet_item', :collection => @linesheet_items %>
+  </table>
+  <%= will_paginate @linesheet_items %>
+<% end %>

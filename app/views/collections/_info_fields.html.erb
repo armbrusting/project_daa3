@@ -1,0 +1,41 @@
+<%= render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :notes %><br />
+  <%= f.text_field :notes %>
+</div>
+<div class="fields">
+  <%= f.label :projected_units %><br />
+  <%= f.number_field :projected_units %>
+</div>
+<div class="field">
+  <%= f.label :number_of_colors %><br />
+  <%= f.number_field :number_of_colors %>
+</div>
+<div class="field">
+  <%= f.label :size %><br />
+  <%= f.text_field :size %>
+</div>
+<div class="field">
+  <%= f.label :modification %><br />
+  <%= f.text_field :modification %>
+</div>
+<div class="field">
+  <%= f.label :delivery_date %><br />
+  <%= f.date_select :delivery_date, :default => Time.now %>
+</div>
+<div class="field">
+  <%= f.label :export %><br />
+  <%= f.select :export, ['FOB', 'LDP', 'DDP'], { :include_blank => true } %>
+</div>
+<div class="field">
+  <%= f.label :shipment %><br />
+  <%= f.select :shipment, ['Boat', 'Air'], { :include_blank => true } %>
+</div>
+<div class="field">
+  <%= f.label :ship_cost %><br />
+  <%= f.number_field :ship_cost %>
+</div>
+<div class="field">
+  <%= f.label :pricing %><br />
+  <%= f.number_field :pricing %>
+</div>

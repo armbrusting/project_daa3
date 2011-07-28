@@ -2,12 +2,7 @@
 <div class="stats">
   <table summary="Folder stats">
     <tr>
-      <td>
-        <a href="<%= collecting_folder_path(@folder) %>">
-          <span id="collecting" class="stat">
-            <%= pluralize(@folder.collecting.count, "style") %>
-          </span>
-        </a>
+      <td><%= link_to pluralize(@folder.collections.count, "styles"), folder_path(params[:folder_id]) %>
       </td>
     </tr>
   </table>
