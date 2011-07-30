@@ -19,7 +19,7 @@
 <% elsif f.object.pp_approval == "no" %>
 <div class="field">
   <%= f.label :pp_approval_note %><br />
-  <%= f.text_field :pp_approval_note %>
+  <%= f.text_area :pp_approval_note %>
 </div>
 <div class="fields">
   <%= f.label :pp_approval_date %><br />
@@ -44,7 +44,7 @@
 <% elsif f.object.top_approval == "no" %>
 <div class="field">
   <%= f.label :top_approval_note %><br />
-  <%= f.text_field :top_approval_note %>
+  <%= f.text_area :top_approval_note %>
 </div>
 <div class="fields">
   <%= f.label :top_approval_date %><br />

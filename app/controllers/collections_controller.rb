@@ -30,6 +30,8 @@ class CollectionsController < ApplicationController
   def edit
     @title = "Edit linesheet item"
     @collection = Collection.find(params[:id])
+    @folder = Collection.find(params[:id]).collector
+    @style = Collection.find(params[:id]).collected
   end
   
   def update

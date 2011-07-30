@@ -2,8 +2,12 @@
   <tr>
     <td class="main">
 		<h1><%= @collection.id %> | <%= @style.number %> | <%= @collection.status %></h1>
-				<%= link_to "Return to " + @folder.name, folder_collections_path(@folder)%> | 
-				<%= link_to "Add another Style", folder_styles_path(@folder.id)%> | <p><%= link_to "Printable P.O. (PDF)", collection_path(@collection, :format => 'pdf') %></p>	
+			<ul>
+				<li><%= link_to "Return to " + @folder.name, folder_collections_path(@folder)%></li>
+				<li><%= link_to "Add another Style to " + @folder.name, folder_styles_path(@folder.id)%></li>
+				<li><%= link_to "Printable P.O. (PDF)", collection_path(@collection, :format => 'pdf') %></li>
+				<li><%= link_to "Edit", edit_collection_path %></li>
+			</ul>	
 		<% if @collection.status == "new" %>
 			<%= render 'info', :collection => @collection %>
 		<% elsif @collection.status == "updated" %>
@@ -17,10 +21,7 @@
 		<% elsif @collection.status == "shipped" %>
 		<%= render 'shipping', :collection => @collection %>
 		<% else %>
-		<%= render 'info', :collection => @collection %>
-		<%= render 'approval', :collection => @collection %>
-		<%= render 'production', :collection => @collection %>
-		<%= render 'shipping', :collection => @collection %>		
+		<%= render 'delivered', :collection => @collection %>		
 		<% end %>
 	</td>
 	<td class="sidebar round">

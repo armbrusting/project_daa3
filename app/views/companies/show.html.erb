@@ -1,4 +1,7 @@
-<h1>
+<table class="company" summary="company information">
+  <tr>
+    <td class="main">
+	<h1>
 	<%= @company.name %>
 </h1>
 	<p>
@@ -20,3 +23,13 @@
 			<%= link_to "Add a folder", newfolder_path(params[:company_id]) %>
 	    <% end %>
 		</p>
+		</td>
+	    <td class="sidebar round">
+			<ul>
+				<li>Contact: <%= @company.contact %></li>
+				<li>Notes: <%= @company.notes %></li>
+			</ul>
+	    </td>
+	  </tr>
+
+	</table>

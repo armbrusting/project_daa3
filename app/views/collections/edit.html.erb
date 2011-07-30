@@ -1,8 +1,247 @@
-<h1><%= @title %></h1>
+<table summary="Style in Collection">
+  <tr>
+    <td class="main">
+		<h1><%= @collection.id %> | <%= @style.number %> | <%= @collection.status %></h1>
+		<ul>
+			<li><%= link_to "Return to " + @folder.name, folder_collections_path(@folder)%></li>
+			<li><%= link_to "Add another Style to " + @folder.name, folder_styles_path(@folder.id)%></li>
+			<li><%= link_to "Printable P.O. (PDF)", collection_path(@collection, :format => 'pdf') %></li>
+			<li><%= link_to "Back", collection_path %></li>
+		</ul>
+				<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
+				<%= render 'shared/error_messages', :object => f.object %>
+				<div class="field">
+				  <%= f.label :notes %><br />
+				  <%= f.text_area :notes %>
+				</div>
+				<div class="fields">
+				  <%= f.label :projected_units %><br />
+				  <%= f.number_field :projected_units, :step => "100" %>
+				</div>
+				<div class="field">
+				  <%= f.label :number_of_colors %><br />
+				  <%= f.number_field :number_of_colors %>
+				</div>
+				<div class="field">
+				  <%= f.label :size %><br />
+				  <%= f.text_field :size %>
+				</div>
+				<div class="field">
+				  <%= f.label :modification %><br />
+				  <%= f.text_field :modification %>
+				</div>
+				<div class="field">
+				  <%= f.label :delivery_date %><br />
+				  <%= f.date_select :delivery_date, :default => Time.now %>
+				</div>
+				<div class="field">
+				  <%= f.label :export %><br />
+				  <%= f.select :export, ['FOB', 'LDP', 'DDP'], { :include_blank => true } %>
+				</div>
+				<div class="field">
+				  <%= f.label :shipment %><br />
+				  <%= f.select :shipment, ['Boat', 'Air'], { :include_blank => true } %>
+				</div>
+				<div class="field">
+				  <%= f.label :ship_cost %><br />
+				  <%= f.number_field :ship_cost, :step => "10" %>
+				</div>
+				<div class="field">
+				  <%= f.label :pricing %><br />
+				  <%= f.number_field :pricing %>
+				</div>
+				<% if f.object.fit_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :fit_approval_note %><br />
+				  <%= f.object.fit_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :fit_approval_date %><br />
+				  <%= f.object.fit_approval_date %>
+				</div>
+				<% elsif f.object.fit_approval == "no" %>
+				<div class="field">
+				  <%= f.label :fit_approval_note %><br />
+				  <%= f.text_area :fit_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :fit_approval_date %><br />
+				  <%= f.date_select :fit_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :fit_approval %><br />
+				  <%= f.radio_button :fit_approval, "yes", :onchange => 'this.form.submit();' %> Yes<br />
+				  <%= f.radio_button :fit_approval, "no", :onchange => 'this.form.submit();' %> No<br />
+				  <%= f.radio_button :fit_approval, "n/a", :onchange => 'this.form.submit();' %> N/A<br />
+				</div>
+				<% if f.object.color_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :color_approval_note %><br />
+				  <%= f.object.color_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :color_approval_date %><br />
+				  <%= f.object.color_approval_date %>
+				</div>
+				<% elsif f.object.color_approval == "no" %>
+				<div class="field">
+				  <%= f.label :color_approval_note %><br />
+				  <%= f.text_area :color_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :color_approval_date %><br />
+				  <%= f.date_select :color_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :color_approval %><br />
+				  <%= f.radio_button :color_approval, "yes", :onchange => 'this.form.submit();' %> Yes<br />
+				  <%= f.radio_button :color_approval, "no", :onchange => 'this.form.submit();' %> No<br />
+				  <%= f.radio_button :color_approval, "n/a", :onchange => 'this.form.submit();' %> N/A<br />
+				</div>
+				<% if f.object.print_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :print_approval_note %><br />
+				  <%= f.object.print_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :print_approval_date %><br />
+				  <%= f.object.print_approval_date %>
+				</div>
+				<% elsif f.object.print_approval == "no" %>
+				<div class="field">
+				  <%= f.label :print_approval_note %><br />
+				  <%= f.text_area :print_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :print_approval_date %><br />
+				  <%= f.date_select :print_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :print_approval %><br />
+				  <%= f.radio_button :print_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+				  <%= f.radio_button :print_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+				  <%= f.radio_button :print_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A<br />
+				</div>
+				<% if f.object.quality_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :quality_approval_note %><br />
+				  <%= f.object.quality_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :quality_approval_date %><br />
+				  <%= f.object.quality_approval_date %>
+				</div>
+				<% elsif f.object.quality_approval == "no" %>
+				<div class="field">
+				  <%= f.label :quality_approval_note %><br />
+				  <%= f.text_area :quality_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :quality_approval_date %><br />
+				  <%= f.date_select :quality_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :quality_approval %><br />
+				  <%= f.radio_button :quality_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+				  <%= f.radio_button :quality_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+				  <%= f.radio_button :quality_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A<br />
+				</div>
+				<div class="field">
+				  <%= f.label :factory_start_date %><br />
+				  <%= f.date_select :factory_start_date %>
+				</div>
+				<div class="fields">
+				  <%= f.label :ex_factory_date %><br />
+				  <%= f.date_select :ex_factory_date %>
+				</div>
+				<% if f.object.pp_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :pp_approval_note %><br />
+				  <%= f.object.pp_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :pp_approval_date %><br />
+				  <%= f.object.pp_approval_date %>
+				</div>
+				<% elsif f.object.pp_approval == "no" %>
+				<div class="field">
+				  <%= f.label :pp_approval_note %><br />
+				  <%= f.text_area :pp_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :pp_approval_date %><br />
+				  <%= f.date_select :pp_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :pp_approval %><br />
+				  <%= f.radio_button :pp_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+				  <%= f.radio_button :pp_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+				  <%= f.radio_button :pp_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A
+				</div>
+				<% if f.object.top_approval == "yes" %>
+				<div class="field">
+				  <%= f.label :top_approval_note %><br />
+				  <%= f.object.top_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :top_approval_date %><br />
+				  <%= f.object.top_approval_date %>
+				</div>
+				<% elsif f.object.top_approval == "no" %>
+				<div class="field">
+				  <%= f.label :top_approval_note %><br />
+				  <%= f.text_area :top_approval_note %>
+				</div>
+				<div class="fields">
+				  <%= f.label :top_approval_date %><br />
+				  <%= f.date_select :top_approval_date, :default => Time.now %>
+				</div>
+				<% end %>
+				<div class="field">
+				  <%= f.label :top_approval %><br />
+				  <%= f.radio_button :top_approval, "yes", :onchange => 'this.form.submit();'  %> Yes<br />
+				  <%= f.radio_button :top_approval, "no", :onchange => 'this.form.submit();'  %> No<br />
+				  <%= f.radio_button :top_approval, "n/a", :onchange => 'this.form.submit();'  %> N/A
+				</div>
+				<div class="field">
+				  <%= f.label :vessel %><br />
+				  <%= f.text_field :vessel %>
+				</div>
+				<div class="fields">
+				  <%= f.label :voyage %><br />
+				  <%= f.text_field :voyage %>
+				</div>
+				<div class="field">
+				  <%= f.label :tacking_number %><br />
+				  <%= f.text_field :tacking_number %>
+				</div>
+				<div class="field">
+				  <%= f.label :eta %><br />
+				  <%= f.date_select :eta %>
+				</div>
+				 <div class="field">
+				  <%= f.label :status %><br />
+				  <%= f.radio_button :status, "new" %> New<br />
+				  <%= f.radio_button :status, "updated" %> Updated for Monopol<br />
+				  <%= f.radio_button :status, "returned" %> Returned to DAA<br />
+				  <%= f.radio_button :status, "agreed" %> Awaiting Approvals<br />
+				  <%= f.radio_button :status, "approved" %> Approved for Production<br />
+				  <%= f.radio_button :status, "shipped" %> Shipped<br />
+				  <%= f.radio_button :status, "delivered" %> Delivered<br />
+				</div>
+				<div class="actions">
+				  <%= f.submit "Update" %>
+				</div>
+				<% end %>
+	</td>
+	<td class="sidebar round">
+		<%= render 'sidebar' %>	
 
-<%= form_for(@collection, :html => { :multipart => true})  do |f| %>
-	<%= render 'fields', :f => f %>
-<div class="actions">
-  <%= f.submit "Update" %>
-</div>
-<% end %>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,155 @@
+<%= form_for(@collection, :html => { :multipart => true}) do |f| %>	<div class="field">
+	  <%= f.label :notes %><br />
+	  <%= f.object.notes %>
+	</div>
+	<div class="fields">
+	  <%= f.label :projected_units %><br />
+	  <%= f.object.projected_units %>
+	</div>
+	<div class="field">
+	  <%= f.label :number_of_colors %><br />
+	  <%= f.object.number_of_colors %>
+	</div>
+	<div class="field">
+	  <%= f.label :size %><br />
+	  <%= f.object.size %>
+	</div>
+	<div class="field">
+	  <%= f.label :modification %><br />
+	  <%= f.object.modification %>
+	</div>
+	<div class="field">
+	  <%= f.label :delivery_date %><br />
+	  <%= f.object.delivery_date %>
+	</div>
+	<div class="field">
+	  <%= f.label :export %><br />
+	  <%= f.object.export %>
+	</div>
+	<div class="field">
+	  <%= f.label :shipment %><br />
+	  <%= f.object.shipment %>
+	</div>
+	<div class="field">
+	  <%= f.label :ship_cost %><br />
+	  <%= f.object.ship_cost %>
+	</div>
+	<div class="field">
+	  <%= f.label :pricing %><br />
+	  <%= f.object.pricing %>
+	</div>
+	<% if f.object.fit_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :fit_approval_note %><br />
+	  <%= f.object.fit_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :fit_approval_date %><br />
+	  <%= f.object.fit_approval_date %>
+	</div>
+	<% elsif f.object.fit_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :fit_approval %><br />
+	  <%= f.object.fit_approval %>
+	</div>
+	<% end %>
+	<% if f.object.color_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :color_approval_note %><br />
+	  <%= f.object.color_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :color_approval_date %><br />
+	  <%= f.object.color_approval_date %>
+	</div>
+	<% elsif f.object.color_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :color_approval %><br />
+	  <%= f.object.color_approval %>
+	</div>
+	<% end %>
+	<% if f.object.print_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :print_approval_note %><br />
+	  <%= f.object.print_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :print_approval_date %><br />
+	  <%= f.object.print_approval_date %>
+	</div>
+	<% elsif f.object.print_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :print_approval %><br />
+	  <%= f.object.print_approval %>
+	</div>
+	<% end %>
+	<% if f.object.quality_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :quality_approval_note %><br />
+	  <%= f.object.quality_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :quality_approval_date %><br />
+	  <%= f.object.quality_approval_date %>
+	</div>
+	<% elsif f.object.quality_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :quality_approval %><br />
+	  <%= f.object.quality_approval %>
+	</div>
+	<% end %>
+	<div class="field">
+	  <%= f.label :factory_start_date %><br />
+	  <%= f.object.factory_start_date %>
+	</div>
+	<div class="fields">
+	  <%= f.label :ex_factory_date %><br />
+	  <%= f.object.ex_factory_date %>
+	</div>
+	<% if f.object.pp_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :pp_approval_note %><br />
+	  <%= f.object.pp_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :pp_approval_date %><br />
+	  <%= f.object.pp_approval_date %>
+	</div>
+	<% elsif f.object.pp_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :pp_approval %><br />
+	  <%= f.object.pp_approval %>
+	</div>
+	<% end %>
+	<% if f.object.top_approval == "yes" %>
+	<div class="field">
+	  <%= f.label :top_approval_note %><br />
+	  <%= f.object.top_approval_note %>
+	</div>
+	<div class="fields">
+	  <%= f.label :top_approval_date %><br />
+	  <%= f.object.top_approval_date %>
+	</div>
+	<% elsif f.object.top_approval == "n/a" %>
+	<div class="field">
+	  <%= f.label :top_approval %><br />
+	  <%= f.object.top_approval %>
+	</div>
+	<% end %>
+	<div class="field">
+	  <%= f.label :vessel %><br />
+	  <%= f.object.vessel %>
+	</div>
+	<div class="fields">
+	  <%= f.label :voyage %><br />
+	  <%= f.object.voyage %>
+	</div>
+	<div class="field">
+	  <%= f.label :tacking_number %><br />
+	  <%= f.object.tacking_number %>
+	</div>
+	<div class="field">
+	  <%= f.label :eta %><br />
+	  <%= f.object.eta %>
+	</div>
+	<% end %>

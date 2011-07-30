@@ -10,14 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720205105) do
+ActiveRecord::Schema.define(:version => 20110729201207) do
 
   create_table "collections", :force => true do |t|
     t.integer  "collector_id"
     t.integer  "collected_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "notes"
+    t.text     "notes",                 :limit => 255
     t.integer  "projected_units"
     t.integer  "number_of_colors"
     t.string   "size"
@@ -25,33 +25,33 @@ ActiveRecord::Schema.define(:version => 20110720205105) do
     t.date     "delivery_date"
     t.string   "export"
     t.string   "shipment"
-    t.decimal  "ship_cost",             :default => 0.0
+    t.decimal  "ship_cost",                            :default => 0.0
     t.decimal  "pricing"
-    t.string   "fit_approval",          :default => "no"
+    t.string   "fit_approval",                         :default => "no"
     t.date     "fit_approval_date"
-    t.string   "fit_approval_note"
-    t.string   "color_approval",        :default => "no"
+    t.text     "fit_approval_note",     :limit => 255
+    t.string   "color_approval",                       :default => "no"
     t.date     "color_approval_date"
-    t.string   "color_approval_note"
-    t.string   "print_approval",        :default => "no"
+    t.text     "color_approval_note",   :limit => 255
+    t.string   "print_approval",                       :default => "no"
     t.date     "print_approval_date"
-    t.string   "print_approval_note"
-    t.string   "quality_approval",      :default => "no"
+    t.text     "print_approval_note",   :limit => 255
+    t.string   "quality_approval",                     :default => "no"
     t.date     "quality_approval_date"
-    t.string   "quality_approval_note"
+    t.text     "quality_approval_note", :limit => 255
     t.date     "factory_start_date"
     t.date     "ex_factory_date"
-    t.string   "pp_approval",           :default => "no"
+    t.string   "pp_approval",                          :default => "no"
     t.date     "pp_approval_date"
-    t.string   "pp_approval_note"
-    t.string   "top_approval",          :default => "no"
+    t.text     "pp_approval_note",      :limit => 255
+    t.string   "top_approval",                         :default => "no"
     t.date     "top_approval_date"
-    t.string   "top_approval_note"
+    t.text     "top_approval_note",     :limit => 255
     t.string   "vessel"
     t.string   "voyage"
     t.string   "tacking_number"
     t.date     "eta"
-    t.string   "status",                :default => "new"
+    t.string   "status",                               :default => "new"
   end
 
   add_index "collections", ["collected_id"], :name => "index_collections_on_collected_id"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20110720205105) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact"
+    t.text     "notes"
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
@@ -88,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20110720205105) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "description"
+    t.text     "description",        :limit => 255
     t.string   "department"
     t.string   "classification"
     t.string   "season"

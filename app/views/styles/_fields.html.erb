@@ -5,7 +5,7 @@
 </div>
 <div class="field">
   <%= f.label :description %><br />
-  <%= f.text_field :description %>
+  <%= f.text_area :description %>
 </div>
 <div class="field">
   <%= f.label :department %><br />
@@ -29,7 +29,7 @@
 </div>
 <div class="field">
   <%= f.label :moq, "Minimum Order Quantity" %><br />
-  <%= f.number_field :moq %>
+  <%= f.number_field :moq, :step => "100" %>
 </div>
 <div class="fields">
 	<%= f.label :photo %><br />

@@ -2,7 +2,7 @@
 	<%= link_to @folder.name, folder_collections_path(@folder) %><br />
 
 
-		<%= image_tag @style.photo.url(:medium) %> | <%= link_to @style.number, @style %>
+		<%= image_tag @style.photo.url(:medium) %> <%= link_to @style.number, @style %>
 	<ul>
 		<li>Description: <%= @style.description %></li>
 		<li>Department: <%= @style.department %></li>
