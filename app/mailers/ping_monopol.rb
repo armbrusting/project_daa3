@@ -8,7 +8,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Linesheet Needs Monopol's Review - Test"
+      :subject => "A Purchase Order needs Monopol's review"
     )
   end
   
@@ -17,7 +17,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Linesheet Needs DAA's Review - Test"
+      :subject => "A Purchase Order has been updated for DAA"
     )
   end
   
@@ -26,7 +26,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Linesheet Agreement - Test"
+      :subject => "Purchase Order agreed to, ready for pre-production"
     )
   end
   
@@ -35,7 +35,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Production Approval - Test"
+      :subject => "Purchase Order production approval"
     )
   end
   
@@ -44,7 +44,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Production as Shipped - Test"
+      :subject => "Purchase Order has shipped"
     )
   end
   
@@ -53,7 +53,7 @@ class PingMonopol < ActionMailer::Base
     mail(
       :to => "lyndseyearnold@gmail.com",
       :cc => "ryan.armbrust@gmail.com",
-      :subject => "Production is Delivered - Test"
+      :subject => "Purchase Order has been delivered"
     )
   end
 end
